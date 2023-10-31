@@ -21,7 +21,7 @@ class MtQueue {
     lock();
     queue_.push(t);
     memory_barrier();
-    size_++;
+    size_ = size_ + 1;
     unlock();
   }
 
@@ -31,7 +31,7 @@ class MtQueue {
     T t = queue_.front();
     queue_.pop();
     memory_barrier();
-    size_--;
+    size_ = size_ - 1;
     unlock();
 
     return t;
